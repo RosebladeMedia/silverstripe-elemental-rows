@@ -1,7 +1,8 @@
 # Silverstripe Elemental Rows
 
-![Last Commit](https://img.shields.io/github/last-commit/roseblademedia/silverstripe-elemental-rows?style=for-the-badge) [![Version](https://img.shields.io/packagist/v/roseblademedia/silverstripe-elemental-rows?style=for-the-badge)](https://packagist.org/packages/roseblademedia/silverstripe-elemental-rows)
-[![License](https://img.shields.io/packagist/l/roseblademedia/silverstripe-elemental-rows?style=for-the-badge)](LICENSE.md)
+![Last Commit](https://img.shields.io/github/last-commit/roseblademedia/silverstripe-elemental-rows?style=for-the-badge)
+[![Version](https://img.shields.io/packagist/v/roseblade/silverstripe-elemental-rows?style=for-the-badge)](https://packagist.org/packages/roseblade/silverstripe-elemental-rows)
+[![License](https://img.shields.io/packagist/l/roseblade/silverstripe-elemental-rows?style=for-the-badge)](LICENSE.md)
 
 ## Introduction
 
