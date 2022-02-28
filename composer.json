@@ -1,0 +1,35 @@
+{
+	"name": "roseblade/silverstripe-elemental-rows",
+	"description": "A module designed to help making Bootstrap CSS rows and columns easier",
+	"type": "silverstripe-vendormodule",
+	"license": "MIT",
+	"keywords": [
+		"silverstripe",
+		"cms",
+		"elemental",
+		"bootstrap"
+	],
+	"authors": [
+		{
+			"name": "Ryan Palfrey",
+			"email": "ryan@roseblade.media",
+			"homepage": "https://roseblade.media",
+			"role": "Junior Web Developer"
+		},
+		{
+			"name": "Mathew Morris-Parker",
+			"email": "mathew@roseblade.media",
+			"homepage": "https://roseblade.media",
+			"role": "Managing Director"
+		}
+	],
+	"require": {
+		"silverstripe/framework": "^4.9",
+		"dnadesign/silverstripe-elemental": "^4.8"
+	},
+	"extra": {
+		"expose": [
+			"client/javascript"
+		]
+	}
+}
