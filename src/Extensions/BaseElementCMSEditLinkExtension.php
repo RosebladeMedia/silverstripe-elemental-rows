@@ -4,14 +4,7 @@ namespace Roseblade\ElementalRows\Extension;
 
 use DNADesign\Elemental\Models\BaseElement;
 
-use Elements\Column39;
-use Elements\Column66;
-use Elements\Column93;
-use Elements\Column363;
-use Elements\Column444;
-use Elements\Column3333;
-use Elements\ColumnBlock;
-
+use Roseblade\ElementalRows\Elements\ColumnBlock;
 use SilverStripe\CMS\Controllers\CMSPageEditController;
 use SilverStripe\Control\Controller;
 use SilverStripe\Core\Extension;
@@ -245,5 +238,31 @@ class BaseElementCMSEditLinkExtension extends Extension
 	public function Breadcrumbs()
 	{
 		return $this->getOwner()->Parent()->Breadcrumbs();
+	}
+
+	/**
+	 * Returns boolean to indiciate if element is within a column or not
+	 *
+	 * @return bool
+	 */
+	public function isInColumn()
+	{
+		/** Get the owner of the column */
+		$owner 		= $this->getOwner();
+		$page 		= $owner->getPage();
+
+		if (!empty($page))
+		{
+			/** Grab the class and check it - is it a column block? */
+			$pageClass 	= $page::class;
+
+			if ($pageClass == ColumnBlock::class)
+			{
+				/** Yes it is. We return true so styles can be adapted etc. */
+				return true;
+			}
+		}
+
+		return false;
 	}
 }
