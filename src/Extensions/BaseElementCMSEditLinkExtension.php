@@ -45,8 +45,8 @@ class BaseElementCMSEditLinkExtension extends Extension
 		{
 			return;
 		}
-		// Lots of If conditions to check if the page is a version of column
-		if ($page instanceof Column39 || $page instanceof Column66 || $page instanceof Column93 || $page instanceof Column363 || $page instanceof Column444 || $page instanceof Column3333 || $page instanceof ColumnBlock)
+		// check if the page is a column
+		if ($page instanceof ColumnBlock)
 		{
 			// nested bock - we need to get edit link of parent block
 			$link = Controller::join_links(
@@ -78,6 +78,7 @@ class BaseElementCMSEditLinkExtension extends Extension
 	{
 		$owner = $this->owner;
 
+		// Removing all the column classes so they are not added to other elemental blocks.
 		$fields->removeByName('ColumnClass4');
 		$fields->removeByName('ColumnClass3');
 		$fields->removeByName('ColumnClass2');
@@ -85,93 +86,8 @@ class BaseElementCMSEditLinkExtension extends Extension
 		$fields->removeByName('ColumnClass');
 		$fields->removeByName('RowClass');
 
-		if (is_a($owner, Column39::class) || is_a($owner, Column66::class) || is_a($owner, Column93::class) || is_a($owner, Column363::class) || is_a($owner, Column444::class) || is_a($owner, Column3333::class))
-		{
-			$fields->addFieldToTab(
-				'Root.Settings',
-				TextField::create(
-					'ColumnClass',
-					_t(__CLASS__ . '.ColumnClassLabel', 'Custom classes applied on all Columns:')
-				)
-					->setDescription(_t(__CLASS__ . '.ColumnClassDescription', 'Classes applied to all Columns'))
-			);
-			$fields->addFieldToTab(
-				'Root.Settings',
-				TextField::create(
-					'RowClass',
-					_t(__CLASS__ . '.RowClassLabel', 'Custom classes on Row:')
-				)
-					->setDescription(_t(__CLASS__ . '.RowClassDescription', 'Classes applied to the Row'))
-			);
-		}
-		else
-		{
-			$fields->removeByName('ColumnClass');
-			$fields->removeByName('RowClass');
-		}
 
-		if (is_a($owner, Column39::class) || is_a($owner, Column66::class) || is_a($owner, Column93::class) || is_a($owner, Column363::class) || is_a($owner, Column444::class) || is_a($owner, Column3333::class))
-		{
-			$fields->addFieldToTab(
-				'Root.Settings',
-				TextField::create(
-					'ColumnClass1',
-					_t(__CLASS__ . '.ColumnClass1Label', 'Custom classes on Column: 1')
-				)
-					->setDescription(_t(__CLASS__ . '.ColumnClass1Description', 'Classes applied to the first Column'))
-			);
-			$fields->addFieldToTab(
-				'Root.Settings',
-				TextField::create(
-					'ColumnClass2',
-					_t(__CLASS__ . '.ColumnClass2Label', 'Custom classes on Column: 2')
-				)
-					->setDescription(_t(__CLASS__ . '.ColumnClass2Description', 'Classes applied to the second Column'))
-			);
-
-			if (is_a($owner, Column363::class) || is_a($owner, Column444::class) || is_a($owner, Column3333::class))
-			{
-
-				$fields->addFieldToTab(
-					'Root.Settings',
-					TextField::create(
-						'ColumnClass3',
-						_t(__CLASS__ . '.ColumnClass3Label', 'Custom classes on Column: 3')
-					)
-						->setDescription(_t(__CLASS__ . '.ColumnClass3Description', 'Classes applied to the third Column'))
-				);
-
-				if (is_a($owner, Column3333::class))
-				{
-
-					$fields->addFieldToTab(
-						'Root.Settings',
-						TextField::create(
-							'ColumnClass4',
-							_t(__CLASS__ . '.ColumnClass4Label', 'Custom classes on Column: 4')
-						)
-							->setDescription(_t(__CLASS__ . '.ColumnClass4Description', 'Classes applied to the fourth Column'))
-					);
-				}
-				else
-				{
-					$fields->removeByName('ColumnClass4');
-				}
-			}
-			else
-			{
-				$fields->removeByName('ColumnClass3');
-				$fields->removeByName('ColumnClass4');
-			}
-		}
-		else
-		{
-			$fields->removeByName('ColumnClass1');
-			$fields->removeByName('ColumnClass2');
-			$fields->removeByName('ColumnClass3');
-			$fields->removeByName('ColumnClass4');
-		}
-
+		// adding the column classes back depending on the type selected.
 		if (is_a($owner, ColumnBlock::class))
 		{
 			$Object = $owner->getObject();
