@@ -170,7 +170,7 @@ class BaseElementCMSEditLinkExtension extends Extension
 		if (!empty($page))
 		{
 			/** Grab the class and check it - is it a column block? */
-			$pageClass 	= $page::class;
+			$pageClass 	= get_class($page);
 
 			if ($pageClass == ColumnBlock::class)
 			{
