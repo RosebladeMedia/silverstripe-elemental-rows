@@ -24,8 +24,8 @@
 		}
 	],
 	"require": {
-		"silverstripe/framework": "^4.9",
-		"dnadesign/silverstripe-elemental": "^4.8"
+		"silverstripe/framework": "^5.2",
+		"dnadesign/silverstripe-elemental": "^5.2"
 	},
 	"extra": {
 		"expose": [
